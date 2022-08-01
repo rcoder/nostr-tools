@@ -1,4 +1,4 @@
-import { type Buffer } from 'buffer';
+import { Buffer } from 'buffer';
 
 // these should be available from the native @noble/secp256k1 type
 // declarations, but they somehow aren't so instead: copypasta
@@ -31,7 +31,7 @@ declare function validateSignature(event: Event): boolean;
 declare function signEvent(event: Event, key: PrivKey): Promise<[Uint8Array, number]>;
 
 // filter.js
-declare type Filter = {
+declare type Filter = Partial<{
     ids: string[],
     kinds: EventKind[],
     authors: string[],
@@ -39,7 +39,7 @@ declare type Filter = {
     until: number,
     "#e": string[],
     "#p": string[],
-};
+}>;
 
 declare function matchFilter(filter: Filter, event: Event): boolean;
 declare function matchFilters(filters: Filter[], event: Event): boolean;
@@ -100,6 +100,18 @@ declare type RelayPool = {
 declare function relayPool(): RelayPool;
 
 // nip04.js
+
+declare function encrypt(
+    sendPrivkey: Buffer,
+    recvPubkey: Buffer,
+    text: string
+) => string;
+
+declare function decrypt(
+    recvPrivkey: Buffer,
+    sendPubkey: Buffer,
+    ciphertext: string,
+) => Buffer;
 
 // nip05.js
 

@@ -20,6 +20,7 @@ export function encrypt(privkey, pubkey, text) {
 }
 
 export function decrypt(privkey, pubkey, ciphertext) {
+    console.log(`decrypt`, {Buffer});
   let [cip, iv] = ciphertext.split('?iv=')
   let key = secp256k1.getSharedSecret(privkey, '02' + pubkey)
   let normalizedKey = getNormalizedX(key)

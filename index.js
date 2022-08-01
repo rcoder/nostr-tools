@@ -9,7 +9,10 @@ import {
   serializeEvent,
   getEventHash
 } from './event.js'
+
 import {matchFilter, matchFilters} from './filter.js'
+
+import {encrypt,decrypt} from './nip04.js'
 
 export {
   generatePrivateKey,
@@ -23,5 +26,7 @@ export {
   getPublicKey,
   getBlankEvent,
   matchFilter,
-  matchFilters
+  matchFilters,
+  encrypt,
+  decrypt,
 }
